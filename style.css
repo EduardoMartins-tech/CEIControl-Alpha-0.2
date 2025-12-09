@@ -1,0 +1,233 @@
+/* Reset e base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background-color: #f8f9fa;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Navbar */
+header {
+  background-color: #222;
+  color: white;
+  padding: 20px;
+}
+
+nav {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav h1 {
+  font-size: 1.5rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+/* Botões da Navbar */
+.nav-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.nav-buttons a {
+  text-decoration: none;
+}
+
+/* Botão principal */
+.btn {
+  background-color: #00796b;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #004d40;
+}
+
+/* Botão secundário */
+.btn-secundario {
+  background-color: transparent;
+  border: 2px solid #00796b;
+  color: #00796b;
+  padding: 8px 16px;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.btn-secundario:hover {
+  background-color: #00796b;
+  color: white;
+}
+
+/* Hero Section */
+#hero {
+  background-color: #00695c;
+  color: white;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+#hero h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+#hero p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+#hero a {
+  background-color: #004d40;
+  color: white;
+  padding: 12px 24px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+#hero a:hover {
+  background-color: #003d33;
+}
+
+/* Funcionalidades */
+#funcionalidades {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+#funcionalidades h2 {
+  margin-bottom: 40px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.grid div {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Missão */
+#sobre {
+  background-color: #eeeeee;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+#sobre a {
+  display: inline-block;
+  margin-top: 20px;
+  background-color: #00796b;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+#sobre a:hover {
+  background-color: #00695c;
+}
+
+/* ODS */
+#ods {
+  padding: 60px 20px;
+  background-color: #f1f1f1;
+  text-align: center;
+}
+
+#ods ul {
+  list-style-type: none;
+  padding: 20px 0;
+}
+
+#ods li {
+  margin: 10px 0;
+  font-weight: 500;
+}
+
+/* Contato */
+#contato {
+  padding: 60px 20px;
+  background-color: white;
+  text-align: center;
+}
+
+form {
+  max-width: 500px;
+  margin: auto;
+  text-align: left;
+}
+
+form input,
+form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+form button {
+  background-color: #00796b;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #004d40;
+}
+
+/* Rodapé */
+footer {
+  background-color: #222;
+  color: white;
+  text-align: center;
+  padding: 30px 20px;
+}
+
+footer nav a {
+  color: #ccc;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+footer nav a:hover {
+  text-decoration: underline;
+}
