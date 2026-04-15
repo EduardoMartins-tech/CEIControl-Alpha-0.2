@@ -30,7 +30,19 @@ if (!isset($_SESSION['perfil']) || $_SESSION['perfil'] !== 'admin') {
                     <i class="fa-solid fa-arrow-left"></i> Voltar
                 </a>
             </header>
+            <?php if (isset($_GET['erro']) && $_GET['erro'] == 'email_duplicado'): ?>
+    <div class="alert-danger" style="max-width: 600px; margin: 0 auto 20px auto;">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <span>Este e-mail já está cadastrado no sistema.</span>
+    </div>
+<?php endif; ?>
 
+<?php if (isset($_GET['erro']) && $_GET['erro'] == 'sistema'): ?>
+    <div class="alert-danger" style="max-width: 600px; margin: 0 auto 20px auto;">
+        <i class="fa-solid fa-circle-xmark"></i>
+        <span>Erro ao processar cadastro. Tente novamente.</span>
+    </div>
+<?php endif; ?>
             <section class="content-wrapper">
                 <div class="admin-card" style="max-width: 600px; margin: 0 auto; display: block;">
                     <form action="processa_cadastro.php" method="POST" class="custom-form">

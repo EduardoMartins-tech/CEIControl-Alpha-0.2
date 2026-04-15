@@ -49,6 +49,21 @@ $result = $conn->query($query);
 
         <main class="main-content">
     <header class="dash-header">
+        <?php if (isset($_GET['msg']) && $_GET['msg'] == 'cadastrado'): ?>
+    <div class="alert-success">
+        <i class="fa-solid fa-circle-check"></i>
+        <span>Usuário cadastrado com sucesso!</span>
+        <button onclick="this.parentElement.style.display='none'">&times;</button>
+    </div>
+<?php endif; ?>
+
+<?php if (isset($_GET['msg']) && $_GET['msg'] == 'excluido'): ?>
+    <div class="alert-danger">
+        <i class="fa-solid fa-trash-can"></i>
+        <span>Usuário removido do sistema.</span>
+        <button onclick="this.parentElement.style.display='none'">&times;</button>
+    </div>
+<?php endif; ?>
         <div class="header-welcome">
             <h1>Gestão de Usuários</h1>
             <p>Visualize e gerencie as contas e permissões do sistema.</p>
