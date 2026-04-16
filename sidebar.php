@@ -14,7 +14,7 @@
             <a href="listar_usuarios.php" class="<?= ($pagina_atual == 'usuarios') ? 'active' : '' ?>">
                 <i class="fa-solid fa-users"></i> Usuários
             </a>
-            <a href="listar_produtos.php" class="<?= ($pagina_atual == 'produtos') ? 'active' : '' ?>">
+            <a href="listar_estoque.php" class="<?= ($pagina_atual == 'produtos') ? 'active' : '' ?>">
                 <i class="fa-solid fa-box-open"></i> Produtos
             </a>
             <a href="listar_fornecedores.php" class="<?= ($pagina_atual == 'fornecedores') ? 'active' : '' ?>">
@@ -32,7 +32,7 @@
             <a href="listar_eventos.php" class="<?= ($pagina_atual == 'agenda') ? 'active' : '' ?>">
                 <i class="fa-solid fa-calendar-check"></i> Agenda Escolar
             </a>
-            <a href="listar_produtos.php" class="<?= ($pagina_atual == 'produtos') ? 'active' : '' ?>">
+            <a href="listar_estoque.php" class="<?= ($pagina_atual == 'produtos') ? 'active' : '' ?>">
                 <i class="fa-solid fa-box-archive"></i> Materiais
             </a>
 

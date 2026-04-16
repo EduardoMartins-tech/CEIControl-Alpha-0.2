@@ -55,8 +55,8 @@ if (!isset($_SESSION['perfil']) || $_SESSION['perfil'] !== 'admin') {
                             <h3>Produtos e Serviços</h3>
                             <p>Gestão de itens e inventário.</p>
                             <div class="card-actions">
-                                <a href="form_cadastro_produto.php" class="btn-sm primary">Cadastrar</a>
-                                <a href="listar_produtos.php" class="btn-sm">Listar</a>
+                                <a href="cadastrar_produto.php" class="btn-sm primary">Cadastrar</a>
+                                <a href="listar_estoque.php" class="btn-sm">Listar</a>
                             </div>
                         </div>
                     </div>
@@ -67,7 +67,7 @@ if (!isset($_SESSION['perfil']) || $_SESSION['perfil'] !== 'admin') {
                             <h3>Fornecedores</h3>
                             <p>Logística e parceiros.</p>
                             <div class="card-actions">
-                                <a href="form_cadastro_fornecedor.php" class="btn-sm primary">Cadastrar</a>
+                                <a href="cadastrar_fornecedor.php" class="btn-sm primary">Cadastrar</a>
                                 <a href="listar_fornecedores.php" class="btn-sm">Listar</a>
                             </div>
                         </div>
