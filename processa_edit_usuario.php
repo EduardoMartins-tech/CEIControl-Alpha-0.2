@@ -1,26 +1,24 @@
 <?php
 session_start();
-include('database.php');
+include 'database.php';
 
-// Verifica admin
-if (!isset($_SESSION['perfil']) || $_SESSION['perfil'] !== 'admin') { exit; }
+if (!isset($_SESSION['perfil']) || $_SESSION['perfil'] !== 'admin') {
+    exit("Acesso negado");
+}
 
 $id = $_POST['id'];
 $nome = $_POST['nome'];
 $email = $_POST['email'];
 $perfil = $_POST['perfil'];
-$senha = $_POST['senha'];
+$senha = $_POST['senha']; // Senha sem criptografia
 
 if (!empty($senha)) {
-    // Se digitou senha, criptografa
-    $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
-    $sql = "UPDATE usuarios SET nome=?, email=?, perfil=?, senha=? WHERE id=?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssssi", $nome, $email, $perfil, $senhaHash, $id);
+    // Atualiza tudo, incluindo a nova senha em texto simples
+    $stmt = $conn->prepare("UPDATE usuarios SET nome=?, email=?, perfil=?, senha=? WHERE id=?");
+    $stmt->bind_param("ssssi", $nome, $email, $perfil, $senha, $id);
 } else {
-    // Sem senha nova, atualiza só o resto
-    $sql = "UPDATE usuarios SET nome=?, email=?, perfil=? WHERE id=?";
-    $stmt = $conn->prepare($sql);
+    // Atualiza apenas os dados, mantendo a senha atual
+    $stmt = $conn->prepare("UPDATE usuarios SET nome=?, email=?, perfil=? WHERE id=?");
     $stmt->bind_param("sssi", $nome, $email, $perfil, $id);
 }
 

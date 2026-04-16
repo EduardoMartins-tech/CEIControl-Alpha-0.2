@@ -18,26 +18,7 @@ if (!isset($_SESSION['perfil']) || $_SESSION['perfil'] !== 'admin') {
 <body class="dashboard-body">
 
     <div class="dashboard-container">
-        <aside class="sidebar">
-            <div class="sidebar-logo">
-                <span class="logo-text">CEIControl®</span>
-            </div>
-            
-            <nav class="sidebar-nav">
-                <p class="nav-category">Principal</p>
-                <a href="painel_admin.php" class="active"><i class="fa-solid fa-chart-line"></i> Dashboard</a>
-                
-                <p class="nav-category">Gestão</p>
-                <a href="listar_usuarios.php"><i class="fa-solid fa-users"></i> Usuários</a>
-                <a href="listar_produtos.php"><i class="fa-solid fa-box-open"></i> Produtos</a>
-                <a href="listar_fornecedores.php"><i class="fa-solid fa-truck-moving"></i> Fornecedores</a>
-                <a href="listar_eventos.php"><i class="fa-solid fa-calendar-days"></i> Agenda</a>
-                
-                <p class="nav-category">Sistema</p>
-                <a href="mensagens.php"><i class="fa-solid fa-envelope"></i> Comunicação</a>
-                <a href="logout.php" class="logout-link"><i class="fa-solid fa-right-from-bracket"></i> Sair</a>
-            </nav>
-        </aside>
+        <?php include 'sidebar.php'; ?>
 
         <main class="main-content">
             <header class="dash-header">
@@ -110,7 +91,7 @@ if (!isset($_SESSION['perfil']) || $_SESSION['perfil'] !== 'admin') {
                             <h3>Comunicação</h3>
                             <p>Acesse as mensagens e comunicados internos.</p>
                             <div class="card-actions">
-                                <a href="mensagens.php" class="btn-sm primary">Acessar Mensagens</a>
+                                <a href="chat.php" class="btn-sm primary">Acessar Mensagens</a>
                             </div>
                         </div>
                     </div>

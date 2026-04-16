@@ -5,6 +5,9 @@ if (!isset($_SESSION['perfil']) || $_SESSION['perfil'] !== 'usuario') {
     header("Location: form_login.php");
     exit;
 }
+
+// Define a página atual para o destaque na sidebar
+$pagina_atual = 'dashboard';
 ?>
 
 <!DOCTYPE html>
@@ -19,28 +22,13 @@ if (!isset($_SESSION['perfil']) || $_SESSION['perfil'] !== 'usuario') {
 <body class="dashboard-body">
 
     <div class="dashboard-container">
-        <aside class="sidebar">
-            <div class="sidebar-logo">
-                <span class="logo-text">CEIControl®</span>
-            </div>
-            
-            <nav class="sidebar-nav">
-                <p class="nav-category">Principal</p>
-                <a href="painel_usuario.php" class="active"><i class="fa-solid fa-chalkboard-user"></i> Minha Sala</a>
-                
-                <p class="nav-category">Rotina</p>
-                <a href="listar_eventos.php"><i class="fa-solid fa-calendar-check"></i> Agenda Escolar</a>
-                <a href="mensagens.php"><i class="fa-solid fa-paper-plane"></i> Comunicados</a>
-                
-                <p class="nav-category">Conta</p>
-                <a href="logout.php" class="logout-link"><i class="fa-solid fa-right-from-bracket"></i> Sair</a>
-            </nav>
-        </aside>
+        
+        <?php include 'sidebar.php'; ?>
 
         <main class="main-content">
             <header class="dash-header">
                 <div class="header-welcome">
-                    <h1>Olá, Prof(a). <?= $_SESSION['nome']; ?></h1>
+                    <h1>Olá, Prof(a). <?= htmlspecialchars($_SESSION['nome']); ?></h1>
                     <p>Espaço de gestão pedagógica e rotina escolar.</p>
                 </div>
                 <div class="header-profile">
@@ -77,7 +65,7 @@ if (!isset($_SESSION['perfil']) || $_SESSION['perfil'] !== 'usuario') {
                             <h3>Comunicados</h3>
                             <p>Envie avisos para os responsáveis ou fale com a gestão.</p>
                             <div class="card-actions">
-                                <a href="mensagens.php" class="btn-sm primary">Enviar Mensagem</a>
+                                <a href="chat.php" class="btn-sm primary">Abrir Chat</a>
                             </div>
                         </div>
                     </div>

@@ -5,6 +5,9 @@ if (!isset($_SESSION['perfil']) || $_SESSION['perfil'] !== 'cliente') {
     header("Location: form_login.php");
     exit;
 }
+
+// Variável para destacar o menu na sidebar
+$pagina_atual = 'dashboard';
 ?>
 
 <!DOCTYPE html>
@@ -19,28 +22,13 @@ if (!isset($_SESSION['perfil']) || $_SESSION['perfil'] !== 'cliente') {
 <body class="dashboard-body">
 
     <div class="dashboard-container">
-        <aside class="sidebar">
-            <div class="sidebar-logo">
-                <span class="logo-text">CEIControl®</span>
-            </div>
-            
-            <nav class="sidebar-nav">
-                <p class="nav-category">Início</p>
-                <a href="painel_cliente.php" class="active"><i class="fa-solid fa-house-user"></i> Visão Geral</a>
-                
-                <p class="nav-category">Acompanhamento</p>
-                <a href="listar_eventos.php"><i class="fa-solid fa-calendar-day"></i> Agenda da CEI</a>
-                <a href="mensagens.php"><i class="fa-solid fa-comments"></i> Comunicação</a>
-                
-                <p class="nav-category">Conta</p>
-                <a href="logout.php" class="logout-link"><i class="fa-solid fa-right-from-bracket"></i> Sair</a>
-            </nav>
-        </aside>
+        
+        <?php include 'sidebar.php'; ?>
 
         <main class="main-content">
             <header class="dash-header">
                 <div class="header-welcome">
-                    <h1>Bem-vindo(a), <?= $_SESSION['nome']; ?>!</h1>
+                    <h1>Bem-vindo(a), <?= htmlspecialchars($_SESSION['nome']); ?>!</h1>
                     <p>Aqui você acompanha a rotina escolar do seu filho(a).</p>
                 </div>
                 <div class="header-profile">
@@ -55,7 +43,7 @@ if (!isset($_SESSION['perfil']) || $_SESSION['perfil'] !== 'cliente') {
 
                 <div class="grid-funcionalidades">
                     <div class="admin-card">
-                        <div class="card-icon" style="background: #e6f4f1; color: var(--light-green);">
+                        <div class="card-icon" style="background: #e6f4f1; color: #00a98f;">
                             <i class="fa-solid fa-calendar-check"></i>
                         </div>
                         <div class="card-info">
@@ -68,20 +56,20 @@ if (!isset($_SESSION['perfil']) || $_SESSION['perfil'] !== 'cliente') {
                     </div>
 
                     <div class="admin-card">
-                        <div class="card-icon" style="background: #e6f4f1; color: var(--light-green);">
+                        <div class="card-icon" style="background: #e6f4f1; color: #00a98f;">
                             <i class="fa-solid fa-comment-dots"></i>
                         </div>
                         <div class="card-info">
                             <h3>Comunicação</h3>
                             <p>Fale diretamente com a coordenação ou veja avisos importantes.</p>
                             <div class="card-actions">
-                                <a href="mensagens.php" class="btn-sm primary">Acessar Mensagens</a>
+                                <a href="chat.php" class="btn-sm primary">Acessar Mensagens</a>
                             </div>
                         </div>
                     </div>
 
                     <div class="admin-card full-width">
-                        <div class="card-icon" style="background: #f0f9f7; color: var(--primary-green);">
+                        <div class="card-icon" style="background: #f0f9f7; color: #007a68;">
                             <i class="fa-solid fa-shield-heart"></i>
                         </div>
                         <div class="card-info">

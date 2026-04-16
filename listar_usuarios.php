@@ -6,8 +6,11 @@ if (!isset($_SESSION['perfil']) || $_SESSION['perfil'] !== 'admin') {
     exit;
 }
 
-// Conexão com o banco (ajuste os dados se necessário)
+// Conexão com o banco
 include 'database.php'; 
+
+// Variável para a sidebar saber qual link destacar
+$pagina_atual = 'usuarios'; 
 
 // Consulta para buscar os usuários
 $query = "SELECT id, nome, email, perfil FROM usuarios";
@@ -26,55 +29,46 @@ $result = $conn->query($query);
 <body class="dashboard-body">
 
     <div class="dashboard-container">
-        <aside class="sidebar">
-            <div class="sidebar-logo">
-                <span class="logo-text">CEIControl®</span>
-            </div>
-            
-            <nav class="sidebar-nav">
-                <p class="nav-category">Principal</p>
-                <a href="painel_admin.php"><i class="fa-solid fa-chart-line"></i> Dashboard</a>
-                
-                <p class="nav-category">Gestão</p>
-                <a href="listar_usuarios.php" class="active"><i class="fa-solid fa-users"></i> Usuários</a>
-                <a href="listar_produtos.php"><i class="fa-solid fa-box-open"></i> Produtos</a>
-                <a href="listar_fornecedores.php"><i class="fa-solid fa-truck-moving"></i> Fornecedores</a>
-                <a href="listar_eventos.php"><i class="fa-solid fa-calendar-days"></i> Agenda</a>
-                
-                <p class="nav-category">Sistema</p>
-                <a href="mensagens.php"><i class="fa-solid fa-envelope"></i> Comunicação</a>
-                <a href="logout.php" class="logout-link"><i class="fa-solid fa-right-from-bracket"></i> Sair</a>
-            </nav>
-        </aside>
+        
+        <?php include 'sidebar.php'; ?>
 
         <main class="main-content">
-    <header class="dash-header">
-        <?php if (isset($_GET['msg']) && $_GET['msg'] == 'cadastrado'): ?>
-    <div class="alert-success">
-        <i class="fa-solid fa-circle-check"></i>
-        <span>Usuário cadastrado com sucesso!</span>
-        <button onclick="this.parentElement.style.display='none'">&times;</button>
-    </div>
-<?php endif; ?>
+            <header class="dash-header">
+                <?php if (isset($_GET['msg']) && $_GET['msg'] == 'cadastrado'): ?>
+                    <div class="alert-success">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>Usuário cadastrado com sucesso!</span>
+                        <button onclick="this.parentElement.style.display='none'">&times;</button>
+                    </div>
+                <?php endif; ?>
 
-<?php if (isset($_GET['msg']) && $_GET['msg'] == 'excluido'): ?>
-    <div class="alert-danger">
-        <i class="fa-solid fa-trash-can"></i>
-        <span>Usuário removido do sistema.</span>
-        <button onclick="this.parentElement.style.display='none'">&times;</button>
-    </div>
-<?php endif; ?>
-        <div class="header-welcome">
-            <h1>Gestão de Usuários</h1>
-            <p>Visualize e gerencie as contas e permissões do sistema.</p>
-        </div>
+                <?php if (isset($_GET['msg']) && $_GET['msg'] == 'excluido'): ?>
+                    <div class="alert-danger">
+                        <i class="fa-solid fa-trash-can"></i>
+                        <span>Usuário removido do sistema.</span>
+                        <button onclick="this.parentElement.style.display='none'">&times;</button>
+                    </div>
+                <?php endif; ?>
 
-        <a href="form_cadastro_usuario.php" class="btn-black-full" style="width: auto; padding: 10px 25px; margin-top: 0;">
-            <i class="fa-solid fa-plus"></i> Novo Usuário
-        </a>
-    </header>
+                <?php if (isset($_GET['msg']) && $_GET['msg'] == 'editado'): ?>
+                    <div class="alert-success" style="border-left-color: #4a90e2; color: #4a90e2;">
+                        <i class="fa-solid fa-user-check"></i>
+                        <span>Dados atualizados com sucesso!</span>
+                        <button onclick="this.parentElement.style.display='none'">&times;</button>
+                    </div>
+                <?php endif; ?>
 
-    <section class="content-wrapper">
+                <div class="header-welcome">
+                    <h1>Gestão de Usuários</h1>
+                    <p>Visualize e gerencie as contas e permissões do sistema.</p>
+                </div>
+
+                <a href="form_cadastro_usuario.php" class="btn-black-full" style="width: auto; padding: 10px 25px;">
+                    <i class="fa-solid fa-plus"></i> Novo Usuário
+                </a>
+            </header>
+
+            <section class="content-wrapper">
                 <div class="table-container">
                     <table class="custom-table">
                         <thead>
@@ -93,11 +87,11 @@ $result = $conn->query($query);
                             ?>
                             <tr>
                                 <td>#<?= $row['id']; ?></td>
-                                <td><strong><?= $row['nome']; ?></strong></td>
-                                <td><?= $row['email']; ?></td>
+                                <td><strong><?= htmlspecialchars($row['nome']); ?></strong></td>
+                                <td><?= htmlspecialchars($row['email']); ?></td>
                                 <td>
                                     <?php 
-                                        // Lógica das Badges (Etiquetas Coloridas)
+                                        // Lógica das Badges
                                         if($row['perfil'] == 'admin') {
                                             echo '<span class="badge badge-admin">Gestor Escolar</span>';
                                         } elseif($row['perfil'] == 'cliente') {
@@ -112,7 +106,7 @@ $result = $conn->query($query);
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </a>
                                     <a href="excluir_usuario.php?id=<?= $row['id']; ?>" class="delete-btn" title="Excluir" 
-                                       onclick="return confirm('Tem certeza que deseja excluir o usuário <?= $row['nome']; ?>?')">
+                                       onclick="return confirm('Tem certeza que deseja excluir o usuário <?= htmlspecialchars($row['nome']); ?>?')">
                                         <i class="fa-solid fa-trash"></i>
                                     </a>
                                 </td>
