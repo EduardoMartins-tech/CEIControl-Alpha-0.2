@@ -1151,43 +1151,6 @@ body.dark-mode .card-icon {
 }
 
 /* ============================================================
-   RESPONSIVIDADE
-   ============================================================ */
-@media (max-width: 950px) {
-    .auth-side-visual { display: none; }
-}
-
-@media (max-width: 900px) {
-    .sidebar {
-        width: 220px;
-        min-width: 220px;
-        padding: 15px;
-    }
-
-    .dash-header { padding: 15px 20px; }
-    .content-wrapper { padding: 20px; }
-
-    .form-grid { grid-template-columns: 1fr; }
-}
-
-@media (max-width: 768px) {
-    .dashboard-container { flex-direction: column; }
-
-    .sidebar {
-        width: 100%;
-        min-width: 100%;
-        height: auto;
-        position: relative;
-    }
-
-    .hero-grid,
-    .contact-grid { grid-template-columns: 1fr; }
-
-    .grid-funcionalidades { grid-template-columns: 1fr; }
-
-    .form-card-centered { padding: 25px; }
-}
-/* ============================================================
    CORREÇÕES DARK MODE — PÁGINAS PÚBLICAS E LOGIN
    ============================================================ */
 .auth-card h2 {

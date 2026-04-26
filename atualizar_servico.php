@@ -19,6 +19,7 @@ if (isset($_GET['id'])) {
     <meta charset="UTF-8">
     <title>Editar Serviço - CEIControl</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mobile.css">
 </head>
 <body class="dashboard-body">
     <div class="dashboard-container">
