@@ -1,6 +1,6 @@
 <?php
 if (!isset($_SESSION['perfil']) || !in_array($_SESSION['perfil'], ['admin', 'usuario'])) {
-    header("Location: /login");
+    header("Location: " . BASE_URL . "login");
     exit;
 }
 
@@ -17,14 +17,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $criado_por   = $_SESSION['usuario_id'];
 
     if (!$titulo || !$data_evento) {
-        header("Location: /eventos/cadastro?erro=campos_vazios");
+        header("Location: " . BASE_URL . "eventos/cadastro?erro=campos_vazios");
         exit;
     }
 
     $controller = new EventoController($conn);
     $controller->cadastrar($titulo, $descricao, $data_evento, $hora_evento, $local, $criado_por, $publico_alvo);
 } else {
-    header("Location: /eventos/cadastro");
+    header("Location: " . BASE_URL . "eventos/cadastro");
     exit;
 }
 ?>

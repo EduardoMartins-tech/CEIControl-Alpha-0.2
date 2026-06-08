@@ -1,6 +1,6 @@
 <?php
 if (!isset($_SESSION['perfil']) || $_SESSION['perfil'] !== 'admin') {
-    header("Location: /login");
+    header("Location: " . BASE_URL . "login");
     exit;
 }
 
@@ -17,14 +17,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $publico_alvo = trim($_POST['publico_alvo']   ?? 'Geral');
 
     if ($id === 0 || !$titulo || !$data_evento) {
-        header("Location: /eventos?erro=dados_invalidos");
+        header("Location: " . BASE_URL . "eventos?erro=dados_invalidos");
         exit;
     }
 
     $controller = new EventoController($conn);
     $controller->atualizar($id, $titulo, $descricao, $data_evento, $hora_evento, $local, $publico_alvo);
 } else {
-    header("Location: /eventos");
+    header("Location: " . BASE_URL . "eventos");
     exit;
 }
 ?>

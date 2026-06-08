@@ -1,6 +1,6 @@
 <?php
 if (!isset($_SESSION['perfil']) || !in_array($_SESSION['perfil'], ['admin', 'usuario'])) {
-    header("Location: /login");
+    header("Location: " . BASE_URL . "login");
     exit;
 }
 $pagina_atual = 'agenda';
@@ -11,10 +11,10 @@ $pagina_atual = 'agenda';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Novo Evento - CEIControl</title>
-    <link rel="stylesheet" href="/public/style.css">
-    <link rel="stylesheet" href="/public/mobile.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>public/style.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>public/mobile.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="icon" type="image/png" href="/public/assets/ceicontrol.png">
+    <link rel="icon" type="image/png" href="<?= BASE_URL ?>public/assets/ceicontrol.png">
 </head>
 <body class="dashboard-body">
 <div class="dashboard-container">
@@ -26,14 +26,14 @@ $pagina_atual = 'agenda';
                 <h1>Novo Evento</h1>
                 <p>Adicione uma atividade à agenda escolar.</p>
             </div>
-            <a href="/eventos" class="btn-sm secondary" style="text-decoration:none;">
+            <a href="<?= BASE_URL ?>eventos" class="btn-sm secondary" style="text-decoration:none;">
                 <i class="fa-solid fa-arrow-left"></i> Voltar
             </a>
         </header>
 
         <section class="content-wrapper-centered">
             <div class="form-card-centered">
-                <form action="/eventos/processa" method="POST" class="custom-form">
+                <form action="<?= BASE_URL ?>eventos/processa" method="POST" class="custom-form">
 
                     <div class="form-group">
                         <label><i class="fa-solid fa-tag"></i> Título do Evento</label>
@@ -78,6 +78,5 @@ $pagina_atual = 'agenda';
         </section>
     </main>
 </div>
-<script src="/public/script.js"></script>
 </body>
 </html>
