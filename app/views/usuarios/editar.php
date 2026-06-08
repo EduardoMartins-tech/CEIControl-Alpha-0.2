@@ -3,25 +3,16 @@ if (!isset($_SESSION['perfil']) || $_SESSION['perfil'] !== 'admin') {
     header("Location: " . BASE_URL . "login");
     exit;
 }
-
 require_once __DIR__ . '/../../../config/database.php';
 require_once __DIR__ . '/../../../app/controllers/UsuarioController.php';
 
 $controller = new UsuarioController($conn);
-$usuario = null;
+$usuario = isset($_GET['id']) ? $controller->buscar((int)$_GET['id']) : null;
 
-// Garante que a variável exista antes de tentar usar
-if (isset($_GET['id'])) {
-    $usuario = $controller->buscar((int)$_GET['id']);
-}
-
-// Se não encontrou usuário ou não tem ID, volta
 if (!$usuario) {
     header("Location: " . BASE_URL . "usuarios?erro=nao_encontrado");
     exit;
 }
-
-$pagina_atual = 'usuarios';
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -47,7 +38,7 @@ $pagina_atual = 'usuarios';
         </header>
 
         <section class="content-wrapper">
-            <div class="admin-card" style="max-width:600px;margin:0 auto;display:block;">
+            <div class="admin-card">
                 <form action="<?= BASE_URL ?>usuarios/atualizar" method="POST" class="custom-form">
                     <input type="hidden" name="id" value="<?= $usuario['id'] ?>">
 
@@ -64,7 +55,7 @@ $pagina_atual = 'usuarios';
                     <div class="form-group">
                         <label for="perfil">Perfil de Acesso</label>
                         <select name="perfil" id="perfil" required>
-                            <option value="admin"   <?= ($usuario['perfil'] ?? '') === 'admin'   ? 'selected' : '' ?>>Gestor Escolar (Admin)</option>
+                            <option value="admin" <?= ($usuario['perfil'] ?? '') === 'admin' ? 'selected' : '' ?>>Gestor Escolar (Admin)</option>
                             <option value="cliente" <?= ($usuario['perfil'] ?? '') === 'cliente' ? 'selected' : '' ?>>Responsável (Cliente)</option>
                             <option value="usuario" <?= ($usuario['perfil'] ?? '') === 'usuario' ? 'selected' : '' ?>>Educador (Usuário)</option>
                         </select>
