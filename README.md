@@ -1,0 +1,300 @@
+# 🚀 CEIControl
+
+<p align="center">
+  <img src="public/assets/ceicontrol.png" height="120" alt="CEIControl Logo"/>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="public/assets/CEIControlalt.png" height="120" alt="CEIControl Alt Logo"/>  
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="public/assets/JEMTechLOGO1.png" height="120" alt="JEMTech Logo"/>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="public/assets/jemtech.png" height="120" alt="JEMTech Nome"/>
+</p>
+
+<p align="center">
+  <b>Sistema de Gestão para Centros de Educação Infantil Públicos</b>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/status-em%20desenvolvimento-yellow" alt="Status" />
+  <img src="https://img.shields.io/badge/version-0.4-blue" alt="Version" />
+  <img src="https://img.shields.io/badge/license-MIT-green" alt="License" />
+  <img src="https://img.shields.io/badge/PHP-Backend-blueviolet" alt="PHP" />
+  <img src="https://img.shields.io/badge/MySQL-Database-orange" alt="MySQL" />
+  <img src="https://img.shields.io/badge/MVC-Architecture-brightgreen" alt="MVC" />
+</p>
+
+---
+
+## 📌 Sobre o Projeto
+
+O **CEIControl** é uma plataforma web desenvolvida para **modernizar e simplificar a gestão de Centros de Educação Infantil (CEIs) públicos**.
+
+A proposta é centralizar em um único sistema:
+
+- 👥 Gestão de usuários e perfis de acesso
+- 📦 Controle de estoque e serviços
+- 🏢 Gestão de fornecedores
+- 📅 Agenda digital escolar
+- 💬 Comunicação interna entre usuários
+
+> 💡 Projeto desenvolvido pela **JEMTech**, focada em soluções digitais.
+
+---
+
+## 📎 Links do Projeto
+
+| Recurso | Link |
+|---------|------|
+| 🌐 Deploy Backend | [ceicontrol.up.railway.app](https://ceicontrol.up.railway.app) |
+| 🖥️ Deploy Frontend | [CEIControl Front](https://eduardomartins-tech.github.io/CEIControl-Front/) |
+| 📦 Repositório Backend | [GitHub - CEIControl Alpha 0.4](https://github.com/EduardoMartins-tech/CEIControl-Alpha-0.4) |
+| 🎨 Repositório Frontend | [GitHub - CEIControl Front](https://github.com/EduardoMartins-tech/CEIControl-Front) |
+| 🖌️ Protótipo Figma | [Visualizar no Figma](https://www.figma.com/design/Ik8DcPkOuDatNVvMvnUDYq/CCsite?node-id=0-1&p=f) |
+
+---
+
+## 👨‍💻 Equipe e Orientação
+
+<table align="center">
+  <tr>
+    <td align="center">
+      <a href="https://github.com/EduardoMartins-tech">
+        <img src="https://github.com/EduardoMartins-tech.png" width="100px;" alt="Eduardo F. Martins"/><br>
+        <sub><b>Eduardo Ferreira Martins</b></sub> 
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/JVCod1ng">
+        <img src="https://github.com/JVCod1ng.png" width="100px;" alt="João Vitor Martins"/><br>
+        <sub><b>João Vitor Martins</b></sub> 
+      </a>
+    </td>
+  </tr>
+</table>
+
+### 👨‍🏫 Orientação
+* **Prof. Jefferson Roberto de Lima** — *Disciplina de Projeto Integrador III.*
+* **Prof. Francisco Douglas Lima Abreu** — *Disciplina de Projeto Integrador II & Programação WEB.*
+
+---
+
+## 🏢 A Empresa: JEM Tech
+
+A **JEM Tech** é uma startup de impacto social focada no desenvolvimento de soluções digitais de gestão exclusivas para democratizar o acesso à tecnologia.
+
+* **Missão:** Democratizar o acesso à tecnologia de gestão, fornecendo plataformas gratuitas e robustas para a gestão pública.
+* **Visão:** Ser a principal referência nacional em sistemas de gestão pública, ampliando a digitalização da base do país.
+* **Valores:** Inovação para simplificar rotinas, segurança e criptografia de dados sensíveis, acessibilidade em plataformas gratuitas e intuitivas, e respeito ao meio ambiente através da redução do uso de papel.
+
+---
+
+## 🎯 Objetivos
+
+### 🔹 Objetivo Geral
+Criar uma plataforma gratuita, eficiente e acessível para a gestão de CEIs, promovendo **organização, comunicação e transparência**.
+
+### 🔹 Objetivos Específicos
+
+- 📊 Centralizar dados administrativos
+- 💬 Melhorar comunicação com responsáveis
+- 🔐 Garantir segurança com controle de acesso por perfil
+- ⚙️ Utilizar arquitetura MVC para escalabilidade
+- 🌍 Promover inclusão digital no setor público
+
+---
+
+## 🌍 Alinhamento com os Objetivos de Desenvolvimento Sustentável (ODS)
+
+O CEIControl não é apenas uma ferramenta técnica, mas também uma iniciativa de impacto social alinhada com as metas globais da ONU para promover uma educação inclusiva e de qualidade:
+
+* **ODS 4 – Educação de Qualidade:** Melhora a infraestrutura de comunicação e a gestão das creches públicas.
+* **ODS 9 – Indústria, Inovação e Infraestrutura:** Promove a modernização e digitalização de processos governamentais legados.
+* **ODS 10 – Redução das Desigualdades:** Oferece uma solução robusta e 100% gratuita para reduzir a exclusão digital no ambiente escolar público.
+* **ODS 17 – Parcerias e Meios de Implementação:** Viabiliza a integração entre prefeituras, secretarias de educação e a comunidade escolar.
+
+---
+
+## 🧰 Tecnologias
+
+<p align="center">
+
+| Tecnologia | Uso |
+|-----------|-----|
+| PHP 8.x | Back-end e arquitetura MVC |
+| MySQL | Banco de dados relacional |
+| HTML5 | Estrutura das views |
+| CSS3 | Estilo e responsividade |
+| JavaScript | Interatividade e validações |
+| Railway | Hospedagem e deploy |
+| Apache | Servidor web com mod_rewrite |
+| BCrypt | Hash seguro de senhas |
+
+</p>
+
+## 🌟 Funcionalidades
+
+- ✅ CRUD completo — Usuários, Produtos, Serviços, Fornecedores, Eventos
+- 💬 Chat interno entre usuários do sistema
+- 📅 Agenda digital com controle de público-alvo
+- 🔐 Autenticação por perfil com hash BCrypt
+- 🌙 Modo escuro (Dark Mode)
+- 📱 Layout responsivo para mobile
+- ✔️ Validações com JavaScript no front-end
+
+---
+
+## 🏗️ Arquitetura MVC
+
+```text
+CEIControl/
+├── config/
+│   └── database.php
+├── app/
+│   ├── models/
+│   │   ├── UsuarioModel.php
+│   │   ├── ProdutoModel.php
+│   │   ├── FornecedoresModel.php
+│   │   ├── EventoModel.php
+│   │   └── MensagemModel.php
+│   ├── controllers/
+│   │   ├── AuthController.php
+│   │   ├── UsuarioController.php
+│   │   ├── ProdutoController.php
+│   │   ├── FornecedorController.php
+│   │   └── EventoController.php
+│   └── views/
+│       ├── auth/
+│       ├── usuarios/
+│       ├── produtos/
+│       ├── fornecedores/
+│       ├── eventos/
+│       ├── comunicacao.php
+│       └── enviar_mensagens.php
+├── public/
+│   ├── index.php
+│   ├── sobre.html
+│   ├── style.css
+│   ├── mobile.css
+│   ├── script.js
+│   └── assets/
+├── sidebar.php
+├── router.php
+└── tabelas.sql
+```
+
+---
+
+## 🔐 Perfis de Acesso
+
+| Perfil | Descrição | E-mail | Senha |
+|--------|-----------|--------|-------|
+| **Admin** | Gestor Escolar — acesso total | admin@cei.com | 123456 |
+| **Usuario** | Educador — agenda e materiais | usuario@cei.com | 123456 |
+| **Cliente** | Responsável — agenda e chat | cliente@cei.com | 123456 |
+
+> ⚠️ Credenciais apenas para ambiente de demonstração. Altere antes de uso em produção.
+
+---
+
+## 🚀 Histórico de Versões
+
+### ✅ Alpha 0.4 — Arquitetura MVC Completa
+- Atualização e Reformulação do `README.md`
+- Reestruturação completa para padrão MVC
+- Router centralizado com rotas absolutas (`BASE_URL`)
+- Correção de todos os redirects e links das views e controllers
+- CSS do chat integrado ao `style.css`
+- Páginas públicas (`index.php` e `sobre.html`) movidas para `public/`
+- Correção de caminhos de assets, remoção de scripts duplicados e centralização do `session_start`
+- Otimização da conexão com o banco de dados (Remoção de redundância PDO)
+
+### ✅ Alpha 0.3 — CRUDs e Padronização
+- CRUD completo de Agenda, Produtos, Serviços, Fornecedores
+- Separação lógica entre Produtos e Serviços
+- Padronização de UI/UX com card centralizado
+- Validações JavaScript nos formulários
+- Deploy em produção no Railway
+
+### ✅ Alpha 0.2 — Base do Sistema
+- Autenticação com perfis (admin, usuario, cliente)
+- CRUD de usuários
+- Chat interno entre usuários
+- Dark Mode
+
+---
+
+## 📊 Dados de Teste
+
+O banco já vem populado com dados para demonstração:
+
+| Módulo | Exemplos |
+|--------|----------|
+| Usuários | Admin, Educador, Responsável |
+| Agenda | "Reunião de Pais", "Festa Junina" |
+| Estoque | "Resma Papel A4", "Kit de Artes" |
+| Serviços | "Pintura de Sala", "Reparo de Ar Condicionado" |
+| Fornecedores | "Distribuidora Escolar S.A.", "Manutenção Express" |
+
+---
+
+## 🛠️ Como usar o `tabelas.sql`
+
+1. Abra o **phpMyAdmin**
+2. Crie um banco chamado `ceicontrol`
+3. Importe o arquivo `tabelas.sql`
+4. O script cria automaticamente as tabelas: `usuarios`, `fornecedores`, `produtos`, `servicos`, `agenda`, `mensagens`
+
+---
+
+## 💻 Como rodar localmente
+
+### Pré-requisitos
+- XAMPP ou WAMP (PHP 8.x + Apache + MySQL)
+
+### Passo a passo
+
+```bash
+# Clone na pasta do servidor
+cd C:/xampp/htdocs/
+git clone [https://github.com/EduardoMartins-tech/CEIControl-Alpha-0.4.git](https://github.com/EduardoMartins-tech/CEIControl-Alpha-0.4.git)
+```
+
+> **Atenção:** O arquivo `config/database.php` está configurado para o deploy no Railway lendo variáveis de ambiente. Para rodar localmente no XAMPP, você tem duas opções:
+
+**Opção 1:** Configurar as variáveis de ambiente do seu sistema ou do Apache correspondentes aos dados do seu servidor local (ex: `MYSQLHOST=localhost`, `MYSQLUSER=root`, `MYSQLPASSWORD=""`).
+
+**Opção 2:** Substituir temporariamente as variáveis no `config/database.php` apenas no seu ambiente local:
+```php
+$host = "localhost";
+$user = "root";
+$pass = ""; // Geralmente vazio no XAMPP
+$db   = "ceicontrol";
+$port = 3306;
+```
+
+---
+
+## 🗺️ Roadmap Futuro
+
+- [ ] Cadastro de alunos e turmas
+- [ ] Vinculação responsável → aluno → turma
+- [ ] Eventos filtrados por turma para responsáveis
+- [ ] Sistema de solicitação de materiais e serviços
+- [ ] Notificações internas com badge
+- [ ] Dashboard com dados reais (gráficos e contadores)
+- [ ] Controle de autoria nos eventos por educador
+
+---
+
+<p align="center">Desenvolvido pela <b>JEMTech</b> para a FATEC Ferraz de Vasconcelos</p>
+<p align="center">Projeto Integrador — Programação Web — 2025/2026</p>
+
+Acesse no navegador:
+```text
+http://localhost/CEIControl-Alpha-0.4/
+```
