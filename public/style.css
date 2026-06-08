@@ -766,9 +766,11 @@ input:checked + .slider:before { transform: translateX(18px); }
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 40px; 
+    padding: 20px 40px;
     background: var(--bg-card);
     border-bottom: 1px solid var(--border-color);
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
 .header-welcome h1 {
@@ -811,11 +813,12 @@ input:checked + .slider:before { transform: translateX(18px); }
 .admin-card {
     background: var(--bg-card);
     border-radius: 16px;
-    padding: 20px;
-    border: 1px solid var(--border-color);
+    padding: 28px;
+    display: flex;
+    gap: 20px;
     box-shadow: var(--shadow-sm);
-    max-width: 600px; 
-    margin: 0 auto;   
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
 }
 
 .admin-card:hover {
