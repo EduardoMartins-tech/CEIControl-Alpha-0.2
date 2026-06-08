@@ -8,7 +8,11 @@ function toggleDarkMode() {
     if (ico) ico.className = document.body.classList.contains('dark-mode') ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
 }
 
+// =============================================
+// VALIDAÇÃO E EVENTOS GERAIS
+// =============================================
 window.addEventListener('DOMContentLoaded', () => {
+    // 1. Dark Mode
     if (localStorage.getItem('darkMode') === 'true') {
         document.body.classList.add('dark-mode');
         const checkbox = document.getElementById('checkbox');
@@ -17,33 +21,92 @@ window.addEventListener('DOMContentLoaded', () => {
         if (ico) ico.className = 'fa-solid fa-sun';
     }
 
+    // 2. Validações
     if (document.getElementById('form-login')) {
         iniciarValidacaoLogin();
     }
 
-    if (document.querySelector('form[action*="usuarios/processa"]')) {
+    // Corrigido: Agora aceita 'salvar', 'processa' ou 'atualizar'
+    if (document.querySelector('form[action*="usuarios/salvar"], form[action*="usuarios/processa"], form[action*="usuarios/atualizar"]')) {
         iniciarValidacaoCadastro();
+    }
+
+    // 3. Carrossel
+    const textItems = document.querySelectorAll('.carousel-item');
+    const imgItems  = document.querySelectorAll('.c-img');
+    if (textItems.length > 0 && imgItems.length > 0) {
+        let currentIndex = 0;
+        setInterval(() => {
+            textItems[currentIndex].classList.remove('active');
+            imgItems[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % textItems.length;
+            textItems[currentIndex].classList.add('active');
+            imgItems[currentIndex].classList.add('active');
+        }, 4000);
     }
 });
 
+// =============================================
+// FUNÇÕES DE SENHA
+// =============================================
+function toggleSenhaVisibilidade(inputId, btnId) {
+    const input = document.getElementById(inputId);
+    const btn = document.getElementById(btnId);
+    if (!input || !btn) return;
+    
+    if (input.type === "password") {
+        input.type = "text";
+        btn.innerHTML = '<i class="fa-solid fa-eye-slash"></i>';
+    } else {
+        input.type = "password";
+        btn.innerHTML = '<i class="fa-solid fa-eye"></i>';
+    }
+}
 
 // =============================================
-// UTILITÁRIOS
+// VALIDAÇÃO PROATIVA DA SENHA
+// =============================================
+function iniciarValidacaoCadastro() {
+    const senha = document.getElementById('senha');
+    if (!senha) return;
+
+    senha.addEventListener('focus', () => {
+        const container = document.getElementById('senha-regras');
+        if (container) container.style.display = 'block';
+    });
+
+    senha.addEventListener('input', function() {
+        const val = this.value;
+        const temMin = val.length >= 6;
+        const temMai = /[A-Z]/.test(val);
+        const temNum = /[0-9]/.test(val);
+
+        atualizarRegra('req-min', temMin);
+        atualizarRegra('req-mai', temMai);
+        atualizarRegra('req-num', temNum);
+    });
+}
+
+function atualizarRegra(id, valido) {
+    const el = document.getElementById(id);
+    if (el) {
+        el.className = valido ? 'valido' : 'invalido';
+    }
+}
+
+// =============================================
+// UTILITÁRIOS (LOGIN E OUTROS)
 // =============================================
 function mostrarErro(inputId, mensagem) {
     const input = document.getElementById(inputId);
     if (!input) return;
-    let erro = document.getElementById('erro-' + inputId);
-
     input.style.borderColor = '#e74c3c';
-
+    let erro = document.getElementById('erro-' + inputId);
     if (!erro) {
         erro = document.createElement('small');
         erro.id = 'erro-' + inputId;
         erro.style.color = '#e74c3c';
         erro.style.display = 'block';
-        erro.style.marginTop = '4px';
-        erro.style.fontSize = '0.8rem';
         input.parentNode.appendChild(erro);
     }
     erro.textContent = mensagem;
@@ -52,168 +115,60 @@ function mostrarErro(inputId, mensagem) {
 function limparErro(inputId) {
     const input = document.getElementById(inputId);
     if (!input) return;
-    const erro = document.getElementById('erro-' + inputId);
     input.style.borderColor = '';
+    const erro = document.getElementById('erro-' + inputId);
     if (erro) erro.textContent = '';
 }
 
-function validarEmail(email) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
-
-
-// =============================================
-// VALIDAÇÃO DO LOGIN
-// =============================================
 function iniciarValidacaoLogin() {
     const form = document.getElementById('form-login');
-
     const email = document.getElementById('email');
     const senha = document.getElementById('senha');
-
     if (email) email.addEventListener('input', () => limparErro('email'));
     if (senha) senha.addEventListener('input', () => limparErro('senha'));
-
+    
     form.addEventListener('submit', function (e) {
-        let valido = true;
-
-        const emailVal = email ? email.value.trim() : '';
-        const senhaVal = senha ? senha.value.trim() : '';
-
-        if (!emailVal) {
-            mostrarErro('email', 'O e-mail é obrigatório.');
-            valido = false;
-        } else if (!validarEmail(emailVal)) {
-            mostrarErro('email', 'Digite um e-mail válido (ex: nome@email.com).');
-            valido = false;
-        } else {
-            limparErro('email');
+        if (!email.value || !senha.value) {
+            e.preventDefault();
+            mostrarErro('email', 'Preencha todos os campos.');
         }
-
-        if (!senhaVal) {
-            mostrarErro('senha', 'A senha é obrigatória.');
-            valido = false;
-        } else if (senhaVal.length < 6) {
-            mostrarErro('senha', 'A senha deve ter pelo menos 6 caracteres.');
-            valido = false;
-        } else {
-            limparErro('senha');
-        }
-
-        if (!valido) e.preventDefault();
     });
 }
 
 // =============================================
-// VALIDAÇÃO PROATIVA DA SENHA
-// =============================================
-function iniciarValidacaoCadastro() {
-    const form = document.querySelector('form[action*="usuarios/processa"], form[action*="usuarios/atualizar"]');
-    if (!form) return;
-
-    const senha = document.getElementById('senha');
-    
-    // Lista de requisitos que vamos manipular visualmente
-    const reqs = {
-        min: document.getElementById('req-min'),
-        mai: document.getElementById('req-mai'),
-        num: document.getElementById('req-num')
-    };
-
-    if (senha) {
-        senha.addEventListener('focus', () => {
-            const container = document.getElementById('senha-regras');
-            if (container) container.style.display = 'block';
-        });
-
-        senha.addEventListener('input', function() {
-            const val = this.value;
-            
-            // Valida cada regra
-            const temMin = val.length >= 6;
-            const temMai = /[A-Z]/.test(val);
-            const temNum = /[0-9]/.test(val);
-
-            // Atualiza classe visual
-            if (reqs.min) reqs.min.className = temMin ? 'valido' : 'invalido';
-            if (reqs.mai) reqs.mai.className = temMai ? 'valido' : 'invalido';
-            if (reqs.num) reqs.num.className = temNum ? 'valido' : 'invalido';
-        });
-    }
-}
-// =============================================
-// SIDEBAR MOBILE — HAMBURGUER
+// SIDEBAR E ACESSIBILIDADE
 // =============================================
 function toggleSidebar() {
-    const sidebar      = document.getElementById('sidebar');
-    const overlay      = document.getElementById('sidebarOverlay');
-    const hamburgerBtn = document.getElementById('hamburgerBtn');
-
-    if (!sidebar) return;
-
-    sidebar.classList.toggle('open');
-    if (overlay) overlay.classList.toggle('active');
-    if (hamburgerBtn) hamburgerBtn.classList.toggle('open');
-
-    document.body.style.overflow = sidebar.classList.contains('open') ? 'hidden' : '';
+    const sidebar = document.getElementById('sidebar');
+    if (sidebar) {
+        sidebar.classList.toggle('open');
+        document.getElementById('sidebarOverlay')?.classList.toggle('active');
+        document.getElementById('hamburgerBtn')?.classList.toggle('open');
+    }
 }
 
-
-// =============================================
-// MOTOR DO CARROSSEL (dashboard legado)
-// =============================================
-document.addEventListener('DOMContentLoaded', () => {
-    const textItems = document.querySelectorAll('.carousel-item');
-    const imgItems  = document.querySelectorAll('.c-img');
-
-    if (textItems.length === 0 || imgItems.length === 0) return;
-
-    let currentIndex = 0;
-    const totalItems = textItems.length;
-
-    setInterval(() => {
-        textItems[currentIndex].classList.remove('active');
-        imgItems[currentIndex].classList.remove('active');
-        currentIndex = (currentIndex + 1) % totalItems;
-        textItems[currentIndex].classList.add('active');
-        imgItems[currentIndex].classList.add('active');
-    }, 4000);
-});
-
-
-// =============================================
-// CEIControl — MOTOR DE ACESSIBILIDADE
-// =============================================
 function toggleAcessibilidade() {
     const menu = document.getElementById('menuAcessibilidade');
-    if (!menu) return;
-    const aberto = menu.style.display === 'flex';
-    menu.style.display = aberto ? 'none' : 'flex';
+    if (menu) menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
 }
 
 let tamanhoFonteAtual = 100;
 function ajustarFonte(acao) {
     if (acao === 'aumentar' && tamanhoFonteAtual < 150) tamanhoFonteAtual += 10;
-    if (acao === 'diminuir' && tamanhoFonteAtual > 80)  tamanhoFonteAtual -= 10;
+    if (acao === 'diminuir' && tamanhoFonteAtual > 80) tamanhoFonteAtual -= 10;
     document.documentElement.style.fontSize = tamanhoFonteAtual + '%';
 }
 
-let sintetizador = window.speechSynthesis;
 let leituraAtiva = false;
-
 function toggleLeitorVoz() {
     if (leituraAtiva) {
-        sintetizador.cancel();
+        window.speechSynthesis.cancel();
         leituraAtiva = false;
-        alert('Leitor de tela desativado.');
     } else {
-        const alvo  = document.querySelector('.main-content') || document.body;
-        const texto = alvo.innerText;
-        const msg   = new SpeechSynthesisUtterance(texto);
+        const texto = document.querySelector('.main-content')?.innerText || document.body.innerText;
+        const msg = new SpeechSynthesisUtterance(texto);
         msg.lang = 'pt-BR';
-        msg.rate = 1.2;
-        sintetizador.speak(msg);
+        window.speechSynthesis.speak(msg);
         leituraAtiva = true;
-        alert('Leitor de tela ativado!');
     }
 }
