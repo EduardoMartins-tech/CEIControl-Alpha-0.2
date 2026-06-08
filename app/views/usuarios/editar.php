@@ -23,13 +23,14 @@ $pagina_atual = 'usuarios';
     <?php include __DIR__ . '/../../../sidebar.php'; ?>
     <main class="main-content">
         <header class="dash-header">
-            <div class="header-welcome">
-                <h1>Editar Usuário</h1>
-            </div>
-            <a href="<?= BASE_URL ?>usuarios" class="btn-black-full" style="width:auto;padding:10px 25px;background:#666;">
-                <i class="fa-solid fa-arrow-left"></i> Voltar
-            </a>
-        </header>
+    <div class="header-welcome">
+        <h1>Editar Usuário</h1>
+        <p>Modificando: <strong><?= htmlspecialchars($usuario['nome'] ?? 'Usuário') ?></strong></p>
+    </div>
+    <a href="<?= BASE_URL ?>usuarios" class="btn-black-full" style="width:auto;padding:10px 25px;background:#666;">
+        <i class="fa-solid fa-arrow-left"></i> Voltar
+    </a>
+</header>
 
         <section class="content-wrapper">
             <div class="admin-card">
