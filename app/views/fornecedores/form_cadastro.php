@@ -1,6 +1,6 @@
 <?php
 if (!isset($_SESSION['perfil']) || $_SESSION['perfil'] !== 'admin') {
-    header("Location: /login");
+    header("Location: " . BASE_URL . "login");
     exit;
 }
 $pagina_atual = 'fornecedores';
@@ -11,10 +11,10 @@ $pagina_atual = 'fornecedores';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Novo Fornecedor - CEIControl</title>
-    <link rel="stylesheet" href="/public/style.css">
-    <link rel="stylesheet" href="/public/mobile.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>public/style.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>public/mobile.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="icon" type="image/png" href="/public/assets/ceicontrol.png">
+    <link rel="icon" type="image/png" href="<?= BASE_URL ?>public/assets/ceicontrol.png">
 </head>
 <body class="dashboard-body">
 <div class="dashboard-container">
@@ -26,14 +26,14 @@ $pagina_atual = 'fornecedores';
                 <h1>Novo Fornecedor</h1>
                 <p>Cadastre um novo parceiro no sistema.</p>
             </div>
-            <a href="/fornecedores" class="btn-sm secondary" style="text-decoration:none;">
+            <a href="<?= BASE_URL ?>fornecedores" class="btn-sm secondary" style="text-decoration:none;">
                 <i class="fa-solid fa-arrow-left"></i> Voltar
             </a>
         </header>
 
         <section class="content-wrapper-centered">
             <div class="form-card-centered">
-                <form action="/fornecedores/processa" method="POST" class="custom-form">
+                <form action="<?= BASE_URL ?>fornecedores/processa" method="POST" class="custom-form">
 
                     <div class="form-group">
                         <label><i class="fa-solid fa-building"></i> Nome da Empresa / Fornecedor</label>
@@ -63,6 +63,5 @@ $pagina_atual = 'fornecedores';
         </section>
     </main>
 </div>
-<script src="/public/script.js"></script>
 </body>
 </html>

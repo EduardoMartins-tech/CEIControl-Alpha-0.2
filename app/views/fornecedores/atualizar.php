@@ -1,6 +1,6 @@
 <?php
 if (!isset($_SESSION['perfil']) || $_SESSION['perfil'] !== 'admin') {
-    header("Location: /login");
+    header("Location: " . BASE_URL . "login");
     exit;
 }
 
@@ -15,14 +15,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $telefone = trim($_POST['telefone']   ?? '');
 
     if ($id === 0 || !$nome || !$cnpj) {
-        header("Location: /fornecedores?erro=dados_invalidos");
+        header("Location: " . BASE_URL . "fornecedores?erro=dados_invalidos");
         exit;
     }
 
     $controller = new FornecedorController($conn);
     $controller->atualizar($id, $nome, $cnpj, $email, $telefone);
 } else {
-    header("Location: /fornecedores");
+    header("Location: " . BASE_URL . "fornecedores");
     exit;
 }
 ?>

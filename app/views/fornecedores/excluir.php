@@ -1,6 +1,6 @@
 <?php
 if (!isset($_SESSION['perfil']) || $_SESSION['perfil'] !== 'admin') {
-    header("Location: /login");
+    header("Location: " . BASE_URL . "login");
     exit;
 }
 
@@ -13,7 +13,7 @@ if ($id > 0) {
     $controller = new FornecedorController($conn);
     $controller->excluir($id);
 } else {
-    header("Location: /fornecedores");
+    header("Location: " . BASE_URL . "fornecedores");
     exit;
 }
 ?>
