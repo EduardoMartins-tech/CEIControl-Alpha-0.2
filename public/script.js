@@ -104,69 +104,43 @@ function iniciarValidacaoLogin() {
     });
 }
 
-
 // =============================================
-// VALIDAÇÃO DO CADASTRO DE USUÁRIO
+// VALIDAÇÃO PROATIVA DA SENHA
 // =============================================
 function iniciarValidacaoCadastro() {
-    const form = document.querySelector('form[action*="usuarios/processa"]');
+    const form = document.querySelector('form[action*="usuarios/processa"], form[action*="usuarios/atualizar"]');
+    if (!form) return;
 
-    const nome  = document.getElementById('nome');
-    const email = document.getElementById('email');
     const senha = document.getElementById('senha');
+    
+    // Lista de requisitos que vamos manipular visualmente
+    const reqs = {
+        min: document.getElementById('req-min'),
+        mai: document.getElementById('req-mai'),
+        num: document.getElementById('req-num')
+    };
 
-    if (nome)  nome.addEventListener('input',  () => limparErro('nome'));
-    if (email) email.addEventListener('input', () => limparErro('email'));
-    if (senha) senha.addEventListener('input', () => limparErro('senha'));
+    if (senha) {
+        senha.addEventListener('focus', () => {
+            const container = document.getElementById('senha-regras');
+            if (container) container.style.display = 'block';
+        });
 
-    form.addEventListener('submit', function (e) {
-        let valido = true;
+        senha.addEventListener('input', function() {
+            const val = this.value;
+            
+            // Valida cada regra
+            const temMin = val.length >= 6;
+            const temMai = /[A-Z]/.test(val);
+            const temNum = /[0-9]/.test(val);
 
-        const nomeVal  = nome  ? nome.value.trim()  : '';
-        const emailVal = email ? email.value.trim()  : '';
-        const senhaVal = senha ? senha.value.trim()  : '';
-
-        if (!nomeVal) {
-            mostrarErro('nome', 'O nome completo é obrigatório.');
-            valido = false;
-        } else if (nomeVal.length < 3) {
-            mostrarErro('nome', 'O nome deve ter pelo menos 3 caracteres.');
-            valido = false;
-        } else {
-            limparErro('nome');
-        }
-
-        if (!emailVal) {
-            mostrarErro('email', 'O e-mail é obrigatório.');
-            valido = false;
-        } else if (!validarEmail(emailVal)) {
-            mostrarErro('email', 'Digite um e-mail válido (ex: nome@email.com).');
-            valido = false;
-        } else {
-            limparErro('email');
-        }
-
-        if (!senhaVal) {
-            mostrarErro('senha', 'A senha é obrigatória.');
-            valido = false;
-        } else if (senhaVal.length < 6) {
-            mostrarErro('senha', 'A senha deve ter pelo menos 6 caracteres.');
-            valido = false;
-        } else if (!/[A-Z]/.test(senhaVal)) {
-            mostrarErro('senha', 'A senha deve ter pelo menos uma letra maiúscula.');
-            valido = false;
-        } else if (!/[0-9]/.test(senhaVal)) {
-            mostrarErro('senha', 'A senha deve ter pelo menos um número.');
-            valido = false;
-        } else {
-            limparErro('senha');
-        }
-
-        if (!valido) e.preventDefault();
-    });
+            // Atualiza classe visual
+            if (reqs.min) reqs.min.className = temMin ? 'valido' : 'invalido';
+            if (reqs.mai) reqs.mai.className = temMai ? 'valido' : 'invalido';
+            if (reqs.num) reqs.num.className = temNum ? 'valido' : 'invalido';
+        });
+    }
 }
-
-
 // =============================================
 // SIDEBAR MOBILE — HAMBURGUER
 // =============================================
