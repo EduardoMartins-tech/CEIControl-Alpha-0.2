@@ -62,9 +62,27 @@ $pagina_atual = 'usuarios';
                     </div>
 
                     <div class="form-group">
-                        <label>Nova Senha (opcional)</label>
-                        <input type="password" name="senha" placeholder="********">
-                    </div>
+    <label>Nova Senha (opcional)</label>
+    <div style="position: relative;">
+        <input type="password" id="senha" name="senha" placeholder="********">
+        <button type="button" id="btn-senha" onclick="toggleSenhaVisibilidade('senha','btn-senha')" 
+            style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--text-sub);">
+            <i class="fa-solid fa-eye"></i>
+        </button>
+    </div>
+    <div id="senha-regras" style="display:none;margin-top:10px;padding:12px;background:var(--bg-body);border:1px solid var(--border-color);border-radius:8px;font-size:0.85rem;">
+        <p style="margin:0 0 8px;font-weight:600;color:var(--text-main);">A senha deve conter:</p>
+        <p id="req-min" class="invalido" style="margin:4px 0;">
+            <i class="fa-solid fa-circle-xmark"></i> Mínimo 6 caracteres
+        </p>
+        <p id="req-mai" class="invalido" style="margin:4px 0;">
+            <i class="fa-solid fa-circle-xmark"></i> Uma letra maiúscula
+        </p>
+        <p id="req-num" class="invalido" style="margin:4px 0;">
+            <i class="fa-solid fa-circle-xmark"></i> Um número
+        </p>
+    </div>
+</div>
 
                     <div class="form-actions">
                         <button type="submit" class="btn-finalizar">
