@@ -53,24 +53,21 @@ $pagina_atual = 'usuarios';
                         <input type="email" name="email" id="email" placeholder="email@exemplo.com" required>
                     </div>
 
-                    <div class="form-group">
+                   <div class="form-group">
                         <label for="senha">Senha</label>
-                        <div style="display: flex; gap: 10px;">
-                            <input type="password" name="senha" id="senha" placeholder="Crie uma senha" required
-                                   onfocus="const r = document.getElementById('senha-regras'); if(r) r.style.display='block';" 
-                                   onblur="const r = document.getElementById('senha-regras'); if(r) r.style.display='none';">
-                            <button type="button" onclick="toggleSenhaVisibilidade('senha', 'btn-senha')" id="btn-senha" 
-                                    style="padding: 10px; border:1px solid #ccc; background:#f4f4f4; cursor: pointer;">
+                        <div style="position: relative;">
+                            <input type="password" name="senha" id="senha" placeholder="Crie uma senha" required>
+                            <button type="button" onclick="toggleSenhaVisibilidade('senha', 'btn-senha')" id="btn-senha"
+                                style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--text-sub);">
                                 <i class="fa-solid fa-eye"></i>
                             </button>
                         </div>
                         <ul id="senha-regras">
-                            <li id="req-min" class="invalido"><i class="fa-solid fa-circle-check"></i> Mínimo de 6 caracteres</li>
-                            <li id="req-mai" class="invalido"><i class="fa-solid fa-circle-check"></i> Pelo menos uma letra maiúscula</li>
-                            <li id="req-num" class="invalido"><i class="fa-solid fa-circle-check"></i> Pelo menos um número</li>
+                            <li id="req-min" class="invalido"><i class="fa-solid fa-circle-xmark"></i> Mínimo de 6 caracteres</li>
+                            <li id="req-mai" class="invalido"><i class="fa-solid fa-circle-xmark"></i> Pelo menos uma letra maiúscula</li>
+                            <li id="req-num" class="invalido"><i class="fa-solid fa-circle-xmark"></i> Pelo menos um número</li>
                         </ul>
                     </div>
-
                     <div class="form-group">
                         <label for="perfil">Perfil de Acesso</label>
                         <select name="perfil" id="perfil" required>
