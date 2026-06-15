@@ -52,8 +52,6 @@ A proposta é centralizar em um único sistema:
 |---------|------|
 | 🌐 Deploy Backend | [ceicontrol.up.railway.app](https://ceicontrol.up.railway.app) |
 | 🖥️ Deploy Frontend | [CEIControl Front](https://eduardomartins-tech.github.io/CEIControl-Front/) |
-| 📦 Repositório Backend | [GitHub - CEIControl Alpha 0.4](https://github.com/EduardoMartins-tech/CEIControl-Alpha-0.4) |
-| 🎨 Repositório Frontend | [GitHub - CEIControl Front](https://github.com/EduardoMartins-tech/CEIControl-Front) |
 | 🖌️ Protótipo Figma | [Visualizar no Figma](https://www.figma.com/design/Ik8DcPkOuDatNVvMvnUDYq/CCsite?node-id=0-1&p=f) |
 
 ---
